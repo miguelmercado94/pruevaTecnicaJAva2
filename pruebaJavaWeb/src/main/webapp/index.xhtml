@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Prueba Java</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panel header="Validate">
+
+			<h:panelGrid id="grid" columns="4" cellpadding="5">
+
+				<tr>
+					<h:outputLabel for="name" value="Nombre:" style="font-weight:bold" />
+					<p:inputText id="name" value="#{clienteBean.cliente.nombre}"
+						required="true" label="Name" />
+					<p:message for="name" />
+				</tr>
+				<tr>
+					<h:outputLabel for="apellido" value="Apellido:"
+						style="font-weight:bold" />
+					<p:inputText id="apellido" value="#{clienteBean.cliente.apellido}"
+						required="true" label="apellido" />
+					<p:message for="apellido" />
+				</tr>
+				<tr>
+
+					<h:outputLabel for="procesado" value="procesado"></h:outputLabel>
+					<p:inputText id="procesado"
+						value="#{clienteBean.cliente.procesado}" disabled="true"
+						label="procesado" />
+				</tr>
+				<tr>
+					<p:commandButton value="Guardar Nuevo Cliente"
+						action="#{clienteBean.buttonAction}" style="margin-right:20px;"
+						icon="pi pi-save" title="Icon Only">
+						<f:ajax execute="@form" render="@form" />
+					</p:commandButton>
+
+					<p:link href="http://localhost:8080/pruebaJavaWeb/faces/clientesNoProcesados.xhtml" value="cliente no procesados"/>
+
+				</tr>
+
+			</h:panelGrid>
+
+		</p:panel>
+
+	</h:form>
+
+
+</h:body>
+</html>

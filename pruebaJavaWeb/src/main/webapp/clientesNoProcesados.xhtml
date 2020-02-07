@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Prueba Java</title>
+</h:head>
+<h:body>
+<h:form>
+	<p:dataTable var="cliente" value="#{clienteBean.obtenerClientes()}"
+		selection="#{clienteBean.clientes}" rowKey="#{cliente.id}"
+		style="margin-bottom:0">
+		<f:facet name="header">
+            Checkbox
+        </f:facet>
+		<p:column selectionMode="multiple"
+			style="width:16px;text-align:center" />
+		<p:column headerText="Id">
+			<h:outputText value="#{cliente.id}" />
+		</p:column>
+		<p:column headerText="nombre">
+			<h:outputText value="#{cliente.nombre}" />
+		</p:column>
+		<p:column headerText="apellido">
+			<h:outputText value="#{cliente.apellido}" />
+		</p:column>
+		<p:column headerText="procesado">
+			<h:outputText value="#{cliente.procesado}" />
+		</p:column>
+		
+		<f:facet name="footer">
+			<p:commandButton value="procesar clientes"
+				action="#{clienteBean.procesarCliente()}" style="margin-right:20px;"
+				icon="pi pi-save" title="Icon Only">
+				<f:ajax execute="@form" render="@form" />
+			</p:commandButton>
+		</f:facet>
+		
+	</p:dataTable>
+	</h:form>
+
+</h:body>
+</html>
